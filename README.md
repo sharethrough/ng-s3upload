@@ -133,6 +133,7 @@ attributes:
   * folder - optional, specifies a folder inside the bucket the save the file to
   * enableValidation - optional, set to "false" in order to disable the field validation.
   * targetFilename - An optional attribute for the target filename. if provided the file will be renamed to the provided value instead of having the file original filename.
+  * excludeContentType - An optional attribute that will omit the Content-Type header for the S3 request if true.
 
 ## Themes
 ng-s3upload allows to customize the directive template using themes. Currently the available themes are: bootstrap2, bootstrap3

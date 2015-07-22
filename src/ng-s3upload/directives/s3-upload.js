@@ -76,7 +76,7 @@ angular.module('ngS3upload.directives', []).
                 S3Uploader.upload(scope,
                     s3Uri,
                     key,
-                    opts.acl,
+                    opts,
                     selectedFile.type,
                     s3Options.key,
                     s3Options.policy,
