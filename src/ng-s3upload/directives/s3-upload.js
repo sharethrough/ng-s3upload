@@ -118,6 +118,9 @@ angular.module('ngS3upload.directives', []).
         };
       },
       templateUrl: function(elm, attrs) {
+        if (attrs.templateUrl) {
+          return attrs.templateUrl;
+        }
         var theme = attrs.theme || ngS3Config.theme;
         return 'theme/' + theme + '.html';
       }
