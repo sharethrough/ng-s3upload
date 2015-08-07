@@ -220,7 +220,7 @@ angular.module('ngS3upload.directives', []).
 
                 var key;
                 if (opts.useOriginalFilename) {
-                  key = opts.folder + filename;
+                  key = opts.folder + '/' + filename;
                 } else {
                   key = opts.targetFilename ? scope.$eval(opts.targetFilename) : opts.folder + (new Date()).getTime() + '-' + S3Uploader.randomString(16) + "." + ext;
                 }
