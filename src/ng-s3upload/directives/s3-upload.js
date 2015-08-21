@@ -5,7 +5,7 @@ angular.module('ngS3upload.directives', []).
       require: '?ngModel',
       replace: true,
       transclude: false,
-      scope: true,
+      scope: false,
       controller: ['$scope', '$element', '$attrs', '$transclude', function ($scope, $element, $attrs, $transclude) {
         $scope.attempt = false;
         $scope.success = false;
@@ -49,6 +49,7 @@ angular.module('ngS3upload.directives', []).
             // Update the scope with the view value
             ngModel.$render = function () {
               scope.filename = ngModel.$viewValue;
+              scope.shortFilename = ngModel.$viewValue;
             };
 
             var uploadFile = function () {
@@ -75,7 +76,7 @@ angular.module('ngS3upload.directives', []).
 
                 var key;
                 if (opts.useOriginalFilename) {
-                  key = opts.folder + filename;
+                  key = opts.folder + '/' + filename;
                 } else {
                   key = opts.targetFilename ? scope.$eval(opts.targetFilename) : opts.folder + (new Date()).getTime() + '-' + S3Uploader.randomString(16) + "." + ext;
                 }
@@ -92,6 +93,7 @@ angular.module('ngS3upload.directives', []).
                   ).then(function () {
                     ngModel.$setViewValue(s3Uri + key);
                     scope.filename = ngModel.$viewValue;
+                    scope.shortFilename = filename;
 
                     if (opts.enableValidation) {
                       ngModel.$setValidity('uploading', true);
